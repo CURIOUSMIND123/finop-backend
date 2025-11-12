@@ -17,7 +17,7 @@
     "jsonwebtoken": "^9.0.2",
     "node-fetch": "^3.3.2",
     "razorpay": "^2.9.4",
-    "twilio": "^4.23.1"
+    "twilio": "^4.22.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
