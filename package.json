@@ -1,28 +1,30 @@
 {
-  "name": "finop-backend-production",
+  "name": "finop-backend",
   "version": "1.0.0",
-  "description": "FinOp Partners - Live Options Trading Platform Backend",
+  "description": "FinOp Partners backend - live market data, greeks, payments, notifications",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "dependencies": {
-    "express": "4.18.2",
-    "cors": "2.8.5",
-    "axios": "1.6.0",
-    "nodemailer": "6.9.7",
-    "twilio": "4.10.0",
-    "razorpay": "2.9.1",
-    "pg": "8.11.3",
-    "bcryptjs": "2.4.3",
-    "jsonwebtoken": "9.0.2",
-    "dotenv": "16.3.1"
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^3.3.2",
+    "razorpay": "^2.9.4",
+    "twilio": "^4.23.1"
   },
   "devDependencies": {
-    "nodemon": "3.0.2"
+    "nodemon": "^3.1.0"
   },
   "engines": {
-    "node": "20.x"
-  }
+    "node": ">=18.0.0"
+  },
+  "author": "FinOp Partners",
+  "license": "MIT"
 }
