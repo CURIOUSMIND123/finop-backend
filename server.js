@@ -61,25 +61,7 @@ async function createUser(email, password, phone = '') {
   return rows[0];
 }
 
-// TEMPORARY route to create users table (run once, then delete)
-app.get('/init-db', async (req, res) => {
-  try {
-    await pool.query(`
-      CREATE TABLE IF NOT EXISTS users (
-        id SERIAL PRIMARY KEY,
-        email TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL,
-        phone TEXT,
-        subscription_status TEXT DEFAULT 'free',
-        created_at TIMESTAMP DEFAULT NOW()
-      );
-    `);
-    res.send('✅ users table created');
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('❌ DB error');
-  }
-});
+
 
 // 1️⃣ LIVE DATA
 app.get('/api/live-data', async (req, res) => {
