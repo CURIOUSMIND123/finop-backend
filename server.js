@@ -6,6 +6,8 @@ import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import twilio from 'twilio';
 import crypto from 'crypto';
+import pkg from 'pg';
+const { Pool } = pkg;
 
 // ------------------- Config -------------------
 const app = express();
@@ -40,15 +42,48 @@ function verifyToken(req, res, next) {
   }
 }
 
-// ------------------- Dummy Database -------------------
-const users = [];
+// ------------------- PostgreSQL Database -------------------
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
 
-// ------------------- ROUTES -------------------
+async function findUserByEmail(email) {
+  const { rows } = await pool.query('SELECT * FROM users WHERE email=$1', [email]);
+  return rows[0];
+}
+
+async function createUser(email, password, phone = '') {
+  const { rows } = await pool.query(
+    'INSERT INTO users (email, password, phone, subscription_status) VALUES ($1,$2,$3,$4) RETURNING *',
+    [email, password, phone, 'free']
+  );
+  return rows[0];
+}
+
+// TEMPORARY route to create users table (run once, then delete)
+app.get('/init-db', async (req, res) => {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        email TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL,
+        phone TEXT,
+        subscription_status TEXT DEFAULT 'free',
+        created_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+    res.send('✅ users table created');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('❌ DB error');
+  }
+});
 
 // 1️⃣ LIVE DATA
 app.get('/api/live-data', async (req, res) => {
   try {
-    // Dummy or real NSE data fetch (commented because NSE site blocks some hosts)
     const nifty = { price: 25142 + Math.floor(Math.random()*100-50), change: 40, changePercent: 0.16 };
     const sensex = { price: 82700 + Math.floor(Math.random()*100-50), change: 110, changePercent: 0.13 };
     const vix = 18.5 + (Math.random() - 0.5) * 0.5;
@@ -73,7 +108,7 @@ app.get('/api/max-pain', (req, res) => {
   }
 });
 
-// 3️⃣ GREEKS CALCULATOR (Black-Scholes)
+// 3️⃣ GREEKS CALCULATOR
 app.post('/api/greeks', (req, res) => {
   const { spot, strike, daysToExpiry, volatility } = req.body;
   const T = daysToExpiry / 365;
@@ -99,33 +134,46 @@ app.post('/api/greeks', (req, res) => {
   }
 });
 
-// 4️⃣ USER SIGNUP
-app.post('/api/signup', (req, res) => {
+// 4️⃣ USER SIGNUP (PostgreSQL)
+app.post('/api/signup', async (req, res) => {
   const { email, password, phone } = req.body;
   if (!email || !password) return res.status(400).json({ error: 'Missing fields' });
-  const exists = users.find(u => u.email === email);
-  if (exists) return res.status(400).json({ error: 'User already exists' });
+  try {
+    const existing = await findUserByEmail(email);
+    if (existing) return res.status(400).json({ error: 'User already exists' });
 
-  const user = { id: users.length + 1, email, password, phone, subscription_status: 'free' };
-  users.push(user);
-  const token = generateToken(user);
-  res.json({ success: true, user, token });
+    const user = await createUser(email, password, phone);
+    const token = generateToken(user);
+    res.json({ success: true, user, token });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
-// 5️⃣ LOGIN
-app.post('/api/login', (req, res) => {
+// 5️⃣ LOGIN (PostgreSQL)
+app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
-  const user = users.find(u => u.email === email && u.password === password);
-  if (!user) return res.status(401).json({ error: 'Invalid credentials' });
-  const token = generateToken(user);
-  res.json({ success: true, user, token });
+  try {
+    const user = await findUserByEmail(email);
+    if (!user || user.password !== password) return res.status(401).json({ error: 'Invalid credentials' });
+    const token = generateToken(user);
+    res.json({ success: true, user, token });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
 // 6️⃣ CURRENT USER
-app.get('/api/user', verifyToken, (req, res) => {
-  const user = users.find(u => u.id === req.user.id);
-  if (!user) return res.status(404).json({ error: 'User not found' });
-  res.json({ user });
+app.get('/api/user', verifyToken, async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM users WHERE id=$1', [req.user.id]);
+    if (!rows.length) return res.status(404).json({ error: 'User not found' });
+    res.json({ user: rows[0] });
+  } catch (err) {
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
 // 7️⃣ CREATE ORDER (Razorpay)
@@ -134,7 +182,7 @@ app.post('/api/create-order', async (req, res) => {
   if (!amount) return res.status(400).json({ error: 'Amount required' });
   try {
     const order = await razorpay.orders.create({
-      amount: amount * 100, // Razorpay works in paise
+      amount: amount * 100,
       currency: 'INR',
       receipt: `order_${Date.now()}`,
       notes: { plan: subscription_type || 'pro' }
@@ -148,37 +196,4 @@ app.post('/api/create-order', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to create Razorpay order' });
-  }
-});
-
-// 8️⃣ VERIFY PAYMENT
-app.post('/api/verify-payment', (req, res) => {
-  try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-    const sign = crypto.createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
-      .update(razorpay_order_id + '|' + razorpay_payment_id)
-      .digest('hex');
-    if (sign === razorpay_signature) {
-      // Optional: send WhatsApp confirmation
-      try {
-        twilioClient.messages.create({
-          from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
-          to: `whatsapp:+919999999999`, // <-- replace with user phone dynamically
-          body: `✅ Payment received! Your FinOp Partners subscription is active.`
-        });
-      } catch (twErr) { console.warn('Twilio send failed:', twErr.message); }
-
-      res.json({ success: true, subscriptionEnd: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) });
-    } else {
-      res.status(400).json({ error: 'Signature mismatch' });
-    }
-  } catch (err) {
-    res.status(500).json({ error: 'Verification failed' });
-  }
-});
-
-// ------------------- START -------------------
-app.listen(PORT, () => {
-  console.log(`✅ FinOp backend running on port ${PORT}`);
-});
+    res.status(500).json({ error: 'F
