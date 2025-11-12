@@ -196,4 +196,36 @@ app.post('/api/create-order', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'F
+    res.status(500).json({ error: 'Failed to create Razorpay order' });
+  }
+});
+
+// 8️⃣ VERIFY PAYMENT
+app.post('/api/verify-payment', (req, res) => {
+  try {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    const sign = crypto.createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
+      .update(razorpay_order_id + '|' + razorpay_payment_id)
+      .digest('hex');
+    if (sign === razorpay_signature) {
+      try {
+        twilioClient.messages.create({
+          from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
+          to: `whatsapp:+919999999999`,
+          body: `✅ Payment received! Your FinOp Partners subscription is active.`
+        });
+      } catch (twErr) { console.warn('Twilio send failed:', twErr.message); }
+
+      res.json({ success: true, subscriptionEnd: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) });
+    } else {
+      res.status(400).json({ error: 'Signature mismatch' });
+    }
+  } catch (err) {
+    res.status(500).json({ error: 'Verification failed' });
+  }
+});
+
+// ------------------- START -------------------
+app.listen(PORT, () => {
+  console.log(`✅ FinOp backend running on port ${PORT}`);
+});
