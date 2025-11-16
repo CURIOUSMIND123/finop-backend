@@ -1,8 +1,7 @@
-javascript
 // Trading Dashboard Live Data Script
 // This script fetches REAL data from your backend and updates ALL elements on the page
 
-const BACKEND_URL = 'https://trading-backend.onrender.com';
+const BACKEND_URL = 'https://trading-backend-ee6j.onrender.com';
 
 // Store all price elements that need updating
 const priceElements = {
