@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './index.css';
 
-const BACKEND_URL = 'https://trading-backend.onrender.com';
+const BACKEND_URL = 'https://trading-backend-ee6j.onrender.com';
 
 function App() {
   const [niftyPrice, setNiftyPrice] = useState(19500);
