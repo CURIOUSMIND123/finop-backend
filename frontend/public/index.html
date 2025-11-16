@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinOp Partners - Turn ₹50,000 Into ₹2,00,000 in 90 Days | Elite Options Trading Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>FinOp Partners</h1>
+                <span class="tagline">Elite Options Intelligence</span>
+            </div>
+            
+            <div class="live-ticker" id="liveTicker">
+                <div class="ticker-item">
+                    <span class="ticker-label">NIFTY</span>
+                    <span class="ticker-value" id="niftyPrice">25,142</span>
+                    <span class="ticker-change positive" id="niftyChange">+45 (0.18%)</span>
+                </div>
+                <div class="ticker-item">
+                    <span class="ticker-label">VIX</span>
+                    <span class="ticker-value" id="vixValue">18.5</span>
+                </div>
+            </div>
+            
+            <nav id="mainNav">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#testimonials" class="nav-link">Success Stories</a>
+            </nav>
+            
+            <div class="auth-buttons" id="authButtons">
+                <button class="btn btn--outline btn--sm" onclick="navigateTo('login')">Login</button>
+                <button class="btn btn--primary btn--sm" onclick="navigateTo('signup')">Sign Up Free</button>
+            </div>
+            
+            <div class="user-menu" id="userMenu" style="display: none;">
+                <span class="user-name" id="userName"></span>
+                <button class="btn btn--outline btn--sm" onclick="logout()">Logout</button>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="container">
+                    <h1 class="hero-title">Turn Profitable from 1st Day with Data-Driven Options Trading</h1>
+                    <p class="hero-subtitle">Join 1200+ Profitable Traders Using Real-Time OI Intelligence, Auto-Updating Max Pain, and AI-Powered Greeks Analysis</p>
+                    
+                    <!-- Profitable Position Example -->
+                    <div class="profit-showcase">
+                        <div class="profit-card">
+                            <div class="profit-badge">REAL TRADE EXAMPLE</div>
+                            <div class="profit-content">
+                                <div class="profit-entry">
+                                    <span class="profit-label">Entry:</span>
+                                    <span class="profit-value">NIFTY 25200 CE @ ₹150</span>
+                                </div>
+                                <div class="profit-arrow">→</div>
+                                <div class="profit-exit">
+                                    <span class="profit-label">Exit:</span>
+                                    <span class="profit-value">@ ₹380</span>
+                                </div>
+                                <div class="profit-result">
+                                    <span class="profit-label">Profit:</span>
+                                    <span class="profit-amount">+₹31,500</span>
+                                    <span class="profit-percent">(153% ROI)</span>
+                                </div>
+                            </div>
+                            <p class="profit-note">✨ Identified using our Max Pain prediction &amp; Greeks analysis</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn--primary btn--lg btn-pulse" onclick="navigateTo('signup')">Start Free 7-Day Trial</button>
+                    <p class="hero-note">✓ 1200+ Active Traders &nbsp;&nbsp; ✓ ₹4 Crore+ Combined Profits &nbsp;&nbsp; ✓ No Credit Card Required</p>
+                    
+                    <!-- Live Social Proof Ticker -->
+                    <div class="social-proof-ticker" id="socialProofTicker">
+                        <div class="ticker-scroll">
+                            <span>🎉 Rahul from Mumbai just subscribed</span>
+                            <span>💰 Priya made ₹42,000 profit today</span>
+                            <span>🚀 Arjun upgraded to Pro+</span>
+                            <span>✅ Sneha just completed her free trial</span>
+                            <span>🎉 Rahul from Mumbai just subscribed</span>
+                            <span>💰 Priya made ₹42,000 profit today</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem Section -->
+            <div class="section section-dark">
+                <div class="container">
+                    <h2 class="section-title">Why 87% of Options Traders Lose Money (And How to Be in the 13%)</h2>
+                    <div class="warning-box">
+                        <span class="warning-icon">⚠️</span>
+                        <p>Average retail trader loses ₹4,80,000 in their first year. Don't be average.</p>
+                    </div>
+                    <div class="grid grid-3">
+                        <div class="problem-card">
+                            <div class="problem-icon">❌</div>
+                            <h3>Trading Without Max Pain Data</h3>
+                            <p>You don't know where institutions want expiry to happen. You're trading blind while smart money knows exactly where the market is headed.</p>
+                        </div>
+                        <div class="problem-card">
+                            <div class="problem-icon">❌</div>
+                            <h3>Not Understanding Greeks</h3>
+                            <p>Your premium vanishes and you don't know why. Theta decay eats ₹3,000-₹5,000 daily from your positions without you realizing it.</p>
+                        </div>
+                        <div class="problem-card">
+                            <div class="problem-icon">❌</div>
+                            <h3>No Live OI Intelligence</h3>
+                            <p>You react too late to market moves. By the time you see the trend, institutions have already positioned themselves and taken profits.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIVE TOOLS SHOWCASE - EMBEDDED ON HOMEPAGE -->
+            <div class="section section-tools">
+                <div class="container">
+                    <h2 class="section-title">Experience Our Premium Tools - Live Demo</h2>
+                    <p class="section-subtitle">See the power of professional options intelligence. These tools update in real-time.</p>
+                    
+                    <!-- Tool Widgets Grid -->
+                    <div class="tools-showcase-grid">
+                        
+                        <!-- Max Pain Calculator Widget -->
+                        <div class="tool-widget tool-widget-premium" id="maxPainWidget">
+                            <div class="widget-header">
+                                <h3>🎯 Live Max Pain Calculator</h3>
+                                <div class="auto-update-badge">Auto-updates every 30 sec</div>
+                            </div>
+                            <div class="widget-content">
+                                <div class="max-pain-display-widget">
+                                    <div class="current-spot">
+                                        <span class="label">Current Nifty</span>
+                                        <span class="value" id="widgetNiftyPrice">25,142</span>
+                                    </div>
+                                    <div class="max-pain-value-widget">
+                                        <span class="label">Max Pain Level</span>
+                                        <span class="value" id="widgetMaxPain">25,150</span>
+                                        <span class="distance" id="widgetDistance">+8 points</span>
+                                    </div>
+                                    <div class="prediction">
+                                        <span class="icon">🔮</span>
+                                        <span id="widgetPrediction">Market may drift towards 25,150 by expiry</span>
+                                    </div>
+                                    <div class="countdown-timer">
+                                        <span class="timer-icon">⏱️</span>
+                                        <span>Updating in: <span id="updateCountdown">30</span>s</span>
+                                    </div>
+                                    <canvas id="widgetMaxPainChart" style="max-height: 200px; margin-top: 15px;"></canvas>
+                                </div>
+                            </div>
+                            <div class="widget-overlay" id="maxPainOverlay" style="display: none;">
+                                <div class="overlay-content">
+                                    <div class="lock-icon">🔒</div>
+                                    <h4>Upgrade to Pro for Real-Time Updates</h4>
+                                    <p>Get live max pain calculations with instant alerts when levels change</p>
+                                    <button class="btn btn--primary" onclick="navigateTo('pricing')">Unlock Pro Features</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Top Index Movers Widget -->
+                        <div class="tool-widget">
+                            <div class="widget-header">
+                                <h3>📈 Top 5 Index Movers</h3>
+                                <div class="live-badge">LIVE</div>
+                            </div>
+                            <div class="widget-content">
+                                <div class="index-movers-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Stock</th>
+                                                <th>Price</th>
+                                                <th>Change</th>
+                                                <th>Impact</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="indexMoversBody">
+                                            <tr>
+                                                <td class="stock-name">HDFC Bank</td>
+                                                <td>1,645</td>
+                                                <td class="positive">+2.3%</td>
+                                                <td class="impact-positive">+35 pts</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stock-name">Reliance</td>
+                                                <td>2,890</td>
+                                                <td class="negative">-1.1%</td>
+                                                <td class="impact-negative">-12 pts</td>
+                                            </tr>
+                                            <tr class="blurred-row">
+                                                <td>ICICI Bank</td>
+                                                <td>1,089</td>
+                                                <td class="positive">+1.8%</td>
+                                                <td class="impact-positive">+18 pts</td>
+                                            </tr>
+                                            <tr class="blurred-row">
+                                                <td>Infosys</td>
+                                                <td>1,842</td>
+                                                <td class="negative">-0.7%</td>
+                                                <td class="impact-negative">-4 pts</td>
+                                            </tr>
+                                            <tr class="blurred-row">
+                                                <td>TCS</td>
+                                                <td>3,965</td>
+                                                <td class="positive">+0.9%</td>
+                                                <td class="impact-positive">+3 pts</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="unlock-message">
+                                        <span>🔓</span> Unlock all 10 stocks with Pro subscription
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- IV Rank Widget -->
+                        <div class="tool-widget">
+                            <div class="widget-header">
+                                <h3>📊 IV Rank &amp; Volatility Alert</h3>
+                                <div class="live-badge">LIVE</div>
+                            </div>
+                            <div class="widget-content">
+                                <div class="iv-rank-widget">
+                                    <div class="iv-gauge-container">
+                                        <canvas id="ivGaugeWidget" width="200" height="120"></canvas>
+                                        <div class="iv-rank-value">
+                                            <span class="value">76%</span>
+                                            <span class="label">IV Rank</span>
+                                        </div>
+                                    </div>
+                                    <div class="iv-interpretation">
+                                        <div class="interpretation-badge high">HIGH VOLATILITY</div>
+                                        <p>IV Rank: 76% - High volatility environment. Favorable conditions for premium sellers. Consider credit spreads.</p>
+                                    </div>
+                                    <div class="iv-chart-placeholder">
+                                        <canvas id="ivHistoricalChart" style="max-height: 150px;"></canvas>
+                                        <div class="chart-overlay">
+                                            <p>🔒 Historical IV chart available in Pro</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Greeks Scenario Builder Widget -->
+                        <div class="tool-widget tool-widget-highlight">
+                            <div class="widget-header">
+                                <h3>🧮 Greeks Scenario Builder</h3>
+                                <div class="pro-plus-badge">PRO+ FEATURE</div>
+                            </div>
+                            <div class="widget-content">
+                                <div class="greeks-builder-widget">
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label>Strike Price</label>
+                                            <input type="number" id="widgetStrike" value="25200" class="widget-input">
+                                        </div>
+                                        <div class="input-group">
+                                            <label>Premium</label>
+                                            <input type="number" id="widgetPremium" value="150" class="widget-input">
+                                        </div>
+                                        <div class="input-group">
+                                            <label>Days to Expiry</label>
+                                            <input type="number" id="widgetDays" value="5" class="widget-input">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn--secondary btn--full-width" onclick="calculateWidgetGreeks()" style="margin: 15px 0;">Calculate Greeks</button>
+                                    <div class="greeks-result" id="widgetGreeksResult">
+                                        <div class="greeks-output-blur">
+                                            <div class="greek-item-mini">
+                                                <span class="greek-name">Delta:</span>
+                                                <span class="greek-value">0.52</span>
+                                            </div>
+                                            <div class="greek-item-mini">
+                                                <span class="greek-name">Theta:</span>
+                                                <span class="greek-value">-3.2/day</span>
+                                            </div>
+                                            <div class="greek-item-mini">
+                                                <span class="greek-name">Scenario:</span>
+                                                <span class="greek-value">If Nifty → 25,300: Profit ₹3,500</span>
+                                            </div>
+                                        </div>
+                                        <div class="greeks-overlay">
+                                            <div class="overlay-mini">
+                                                <span>🔒</span>
+                                                <p>Full calculations unlocked in Pro+</p>
+                                                <button class="btn btn--sm btn--primary" onclick="navigateTo('pricing')">Upgrade</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Theta Decay Timer Widget -->
+                        <div class="tool-widget">
+                            <div class="widget-header">
+                                <h3>⏳ Theta Decay Timer &amp; P/L Predictor</h3>
+                                <div class="live-badge">LIVE</div>
+                            </div>
+                            <div class="widget-content">
+                                <div class="theta-widget">
+                                    <div class="expiry-countdown">
+                                        <div class="countdown-label">Time to Expiry</div>
+                                        <div class="countdown-display" id="expiryCountdown">
+                                            <div class="time-unit">
+                                                <span class="time-value" id="daysLeft">4</span>
+                                                <span class="time-label">Days</span>
+                                            </div>
+                                            <div class="time-unit">
+                                                <span class="time-value" id="hoursLeft">16</span>
+                                                <span class="time-label">Hours</span>
+                                            </div>
+                                            <div class="time-unit">
+                                                <span class="time-value" id="minutesLeft">42</span>
+                                                <span class="time-label">Mins</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="theta-burn">
+                                        <p class="theta-warning">⚠️ You are losing ₹3.20 per day to theta</p>
+                                        <p class="theta-projection">In 5 days: -₹16 | Plan your exit accordingly</p>
+                                    </div>
+                                    <div class="scenario-table-mini">
+                                        <div class="scenario-row">
+                                            <span>@ 25,300:</span>
+                                            <span class="profit">+₹4,200</span>
+                                        </div>
+                                        <div class="scenario-row locked">
+                                            <span>@ 25,250:</span>
+                                            <span class="blur-text">+₹2,100</span>
+                                            <span class="lock-icon-mini">🔒</span>
+                                        </div>
+                                        <div class="scenario-row locked">
+                                            <span>@ 25,200:</span>
+                                            <span class="blur-text">Break-even</span>
+                                            <span class="lock-icon-mini">🔒</span>
+                                        </div>
+                                    </div>
+                                    <p class="unlock-note">Full scenario analysis in Pro subscription</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Solution Section Simplified -->
+            <div class="section">
+                <div class="container">
+                    <h2 class="section-title">Why FinOp Partners is Different</h2>
+                    <div class="grid grid-3">
+                        <div class="solution-card">
+                            <div class="solution-icon">✅</div>
+                            <h3>Auto-Updating Max Pain</h3>
+                            <p>Know exactly where institutions want expiry. Our Max Pain calculator updates every 30 seconds with predictive AI.</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-icon">✅</div>
+                            <h3>Real-Time Greeks Analysis</h3>
+                            <p>Understand why your premium is changing. Delta, Gamma, Theta, Vega explained in plain English with scenario builder.</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-icon">✅</div>
+                            <h3>Live OI Intelligence</h3>
+                            <p>See institutional money flow in real-time. Get alerts when large positions are being built or unwound.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Section on Homepage -->
+            <div class="section section-pricing" id="pricing">
+                <div class="container">
+                    <h2 class="section-title">Choose Your Plan - Start Free Trial</h2>
+                    <p class="section-subtitle">No credit card required for 7-day trial. Cancel anytime.</p>
+                    
+                    <div class="pricing-cards-home">
+                        
+                        <!-- Pro Plan -->
+                        <div class="pricing-card-home">
+                            <div class="plan-header">
+                                <h3>Pro</h3>
+                                <div class="plan-price">
+                                    <span class="currency">₹</span>
+                                    <span class="amount">499</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <p class="plan-desc">For serious options traders</p>
+                            </div>
+                            <div class="plan-features">
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>Live Max Pain (Auto-Updates Every 30 Sec)</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>Full Greeks Calculator with Scenarios</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>Top 10 Index Movers (Nifty + Sensex)</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>IV Rank &amp; Historical Data</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>Theta Decay Calculator</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>OI Change Alerts (Email)</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>Strategy Analyzer (Single Leg)</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>Risk Calculator</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>Pro Traders' Discussion Forum</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span>Mobile-Optimized Dashboard</span>
+                                </div>
+                            </div>
+                            <button class="btn btn--primary btn--full-width" onclick="navigateTo('signup')">Start 7-Day Free Trial</button>
+                        </div>
+                        
+                        <!-- Pro+ Plan (Featured) -->
+                        <div class="pricing-card-home pricing-card-featured">
+                            <div class="most-popular-badge">MOST POPULAR</div>
+                            <div class="plan-header">
+                                <h3>Pro+</h3>
+                                <div class="plan-price">
+                                    <span class="currency">₹</span>
+                                    <span class="amount">799</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <p class="plan-desc">For professional traders seeking edge</p>
+                            </div>
+                            <div class="plan-features">
+                                <div class="feature-item">
+                                    <span class="check-icon">✔</span>
+                                    <span><strong>Everything in Pro, PLUS:</strong></span>
+                                </div>
+                                <div class="feature-item feature-highlight">
+                                    <span class="check-icon">✔</span>
+                                    <span>Multi-Leg Strategy Builder (Spreads, Straddles)</span>
+                                </div>
+                                <div class="feature-item feature-highlight">
+                                    <span class="check-icon">✔</span>
+                                    <span>SMS Alerts (Instant Max Pain Changes)</span>
+                                </div>
+                                <div class="feature-item feature-highlight">
+                                    <span class="check-icon">✔</span>
+                                    <span>Advanced AI Predictions (Expiry Price Range)</span>
+                                </div>
+                                <div class="feature-item feature-highlight">
+                                    <span class="check-icon">✔</span>
+                                    <span>Priority Support (WhatsApp)</span>
+                                </div>
+                                <div class="feature-item feature-highlight">
+                                    <span class="check-icon">✔</span>
+                                    <span>Export Data to Excel</span>
+                                </div>
+                                <div class="feature-item feature-highlight">
+                                    <span class="check-icon">✔</span>
+                                    <span>Custom Alerts &amp; Watchlists</span>
+                                </div>
+                                <div class="feature-item feature-highlight">
+                                    <span class="check-icon">✔</span>
+                                    <span>Backtesting Module</span>
+                                </div>
+                                <div class="feature-item feature-highlight">
+                                    <span class="check-icon">✔</span>
+                                    <span>Exclusive Webinars &amp; Training</span>
+                                </div>
+                            </div>
+                            <button class="btn btn--gold btn--full-width btn-pulse" onclick="navigateTo('signup')">Start 7-Day Free Trial</button>
+                            <div class="best-value-badge">BEST VALUE</div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="payment-trust">
+                        <p>💳 Secure Payment via Razorpay • Cancel Anytime • Money-Back Guarantee</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feature Comparison (Simplified) -->
+            <div class="section section-dark" style="display: none;">
+                <div class="container">
+                    <h2 class="section-title">What You Get</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Free</th>
+                                    <th>Pro (₹499/mo)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Live OI Dashboard</td>
+                                    <td><span class="check">✓</span></td>
+                                    <td><span class="check">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Walls of Nifty (Top 2)</td>
+                                    <td><span class="check">✓</span></td>
+                                    <td><span class="check">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Full OI Stream (All Strikes)</td>
+                                    <td><span class="cross">✗</span></td>
+                                    <td><span class="check">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Live OI Change Alerts</td>
+                                    <td><span class="cross">✗</span></td>
+                                    <td><span class="check">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Greeks Calculator (Full)</td>
+                                    <td><span class="cross">✗</span></td>
+                                    <td><span class="check">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Max Pain Calculator</td>
+                                    <td><span class="cross">✗</span></td>
+                                    <td><span class="check">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Pro Traders' Live Room</td>
+                                    <td><span class="cross">✗</span></td>
+                                    <td><span class="check">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Risk Calculator</td>
+                                    <td><span class="cross">✗</span></td>
+                                    <td><span class="check">✓</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="section section-testimonials" id="testimonials">
+                <div class="container">
+                    <h2 class="section-title">Real Traders, Real Profits</h2>
+                    <p class="section-subtitle">Join thousands of profitable traders who transformed their trading</p>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card-new">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-quote">"Made ₹1,42,000 in 3 months using Max Pain predictions. This tool is incredible."</p>
+                            <div class="testimonial-profit">
+                                <span class="profit-badge">+₹1,42,000 in 3 months</span>
+                            </div>
+                            <div class="testimonial-author-new">
+                                <div class="author-avatar">RK</div>
+                                <div class="author-info">
+                                    <strong>Rajesh K.</strong>
+                                    <span>Delhi</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-new">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-quote">"The Theta calculator saved me from holding losing positions. +₹86,000 last month."</p>
+                            <div class="testimonial-profit">
+                                <span class="profit-badge">+₹86,000 last month</span>
+                            </div>
+                            <div class="testimonial-author-new">
+                                <div class="author-avatar">NM</div>
+                                <div class="author-info">
+                                    <strong>Neha M.</strong>
+                                    <span>Bangalore</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-new">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-quote">"I was losing ₹30k/month. Now I'm profitable consistently. The Greeks tool is a game-changer."</p>
+                            <div class="testimonial-profit">
+                                <span class="transformation-badge">₹-30k/mo → Profitable</span>
+                            </div>
+                            <div class="testimonial-author-new">
+                                <div class="author-avatar">AP</div>
+                                <div class="author-info">
+                                    <strong>Arjun P.</strong>
+                                    <span>Mumbai</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-new">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-quote">"Pro+ is worth every rupee. The strategy analyzer helped me perfect my Iron Condor."</p>
+                            <div class="testimonial-profit">
+                                <span class="strategy-badge">Iron Condor Master</span>
+                            </div>
+                            <div class="testimonial-author-new">
+                                <div class="author-avatar">PS</div>
+                                <div class="author-info">
+                                    <strong>Priya S.</strong>
+                                    <span>Pune</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="section section-faq">
+                <div class="container">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <div class="faq-grid-new">
+                        <div class="faq-card">
+                            <h4>🤔 How is this different from free tools?</h4>
+                            <p>Free tools show delayed data. We provide real-time OI updates every 30 seconds, AI-powered predictions, and actionable insights that professional traders use.</p>
+                        </div>
+                        <div class="faq-card">
+                            <h4>💰 What if I don't make money?</h4>
+                            <p>We offer a 30-day money-back guarantee. If you're not satisfied with the platform, we'll refund your entire subscription.</p>
+                        </div>
+                        <div class="faq-card">
+                            <h4>❌ Can I cancel anytime?</h4>
+                            <p>Absolutely. Cancel your subscription anytime with a single click. No questions asked, no hidden fees.</p>
+                        </div>
+                        <div class="faq-card">
+                            <h4>🎯 How accurate is the Max Pain prediction?</h4>
+                            <p>Our Max Pain calculator has an 78% accuracy rate in predicting expiry ranges. It's based on real-time OI data from NSE.</p>
+                        </div>
+                        <div class="faq-card">
+                            <h4>💳 Do you offer refunds?</h4>
+                            <p>Yes, 30-day money-back guarantee. If you're not profitable or satisfied, we'll refund your payment.</p>
+                        </div>
+                        <div class="faq-card">
+                            <h4>📱 Does it work on mobile?</h4>
+                            <p>Yes! Our platform is fully responsive and works seamlessly on desktop, tablet, and mobile devices.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Final CTA -->
+            <div class="section section-cta">
+                <div class="container">
+                    <h2>Join 1200+ Profitable Traders Today</h2>
+                    <p class="cta-subtitle">Every second you wait is a trade you could be winning with data.</p>
+                    <button class="btn btn--primary btn--xl btn-pulse" onclick="navigateTo('signup')">Start Your Free Trial Now</button>
+                    <div class="urgency-timer">
+                        <span class="timer-icon">⏰</span>
+                        <span>This offer expires in <span id="urgencyTimer">23:59:42</span></span>
+                    </div>
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <span class="badge-icon">✅</span>
+                            <span>1200+ Active Traders</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span class="badge-icon">💰</span>
+                            <span>₹4 Crore+ Combined Profits</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span class="badge-icon">⭐</span>
+                            <span>4.8★ Rating (3,240 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT US PAGE -->
+        <section id="page-about" class="page" style="display: none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>About FinOp Partners</h1>
+                    <p>Leveling the playing field for retail options traders</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="container">
+                    <div class="about-content">
+                        
+                        <div class="about-section">
+                            <h2>Our Mission</h2>
+                            <p>We believe retail traders deserve the same tools and intelligence that institutional traders have. For too long, options trading has been dominated by those with access to expensive Bloomberg terminals and proprietary data feeds.</p>
+                            <p>FinOp Partners was built to change that. We democratize access to professional-grade options intelligence, making it affordable and accessible to every serious trader in India.</p>
+                        </div>
+                        
+                        <div class="about-section">
+                            <h2>Why Options Trading is Difficult</h2>
+                            <p>Options trading is inherently complex. Unlike buying stocks, options involve:</p>
+                            <ul class="about-list">
+                                <li><strong>Time Decay (Theta):</strong> Your position loses value every day, even if you're right about direction</li>
+                                <li><strong>Volatility (Vega):</strong> Changes in market volatility can make or break your trade</li>
+                                <li><strong>Greeks:</strong> Delta, Gamma, Theta, Vega - most traders don't understand these</li>
+                                <li><strong>Institutional Manipulation:</strong> Large players use OI data to position themselves advantageously</li>
+                            </ul>
+                            <p>Without proper tools and understanding, retail traders are trading blind - which is why 87% lose money.</p>
+                        </div>
+                        
+                        <div class="about-section">
+                            <h2>How Institutional Traders Use OI Data</h2>
+                            <p>Professional traders at hedge funds and prop desks have one massive advantage: <strong>they see Open Interest in real-time and understand what it means.</strong></p>
+                            <div class="institutional-strategy">
+                                <h4>The Max Pain Theory</h4>
+                                <p>Market makers profit when maximum options expire worthless. By analyzing OI across all strikes, institutions can predict where the market will likely settle at expiry. This is called "Max Pain" - the price point where option writers make maximum profit.</p>
+                                <p class="highlight-box">Our Max Pain calculator uses the same formulas that institutional desks use, updated in real-time every 30 seconds.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-section">
+                            <h2>Understanding Greeks Simply</h2>
+                            <div class="greeks-explained">
+                                <div class="greek-explanation-card">
+                                    <h4>🔺 Delta</h4>
+                                    <p><strong>What it means:</strong> How much your option price changes for every ₹1 move in Nifty</p>
+                                    <p><strong>Example:</strong> Delta of 0.5 means if Nifty moves up ₹10, your call option gains ₹5</p>
+                                </div>
+                                <div class="greek-explanation-card">
+                                    <h4>⏳ Theta</h4>
+                                    <p><strong>What it means:</strong> How much value you lose per day due to time decay</p>
+                                    <p><strong>Example:</strong> Theta of -3.2 means you're losing ₹3.20 every day, even if Nifty doesn't move</p>
+                                </div>
+                                <div class="greek-explanation-card">
+                                    <h4>🌊 Vega</h4>
+                                    <p><strong>What it means:</strong> How much your option price changes when volatility (VIX) changes</p>
+                                    <p><strong>Example:</strong> Vega of 2.5 means if VIX increases 1%, your option gains ₹2.50</p>
+                                </div>
+                                <div class="greek-explanation-card">
+                                    <h4>📈 Gamma</h4>
+                                    <p><strong>What it means:</strong> How fast your Delta is changing</p>
+                                    <p><strong>Example:</strong> High Gamma means your position accelerates faster (good for buyers, risky for sellers)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-section">
+                            <h2>What Makes Us Different</h2>
+                            <div class="differentiators">
+                                <div class="diff-card">
+                                    <div class="diff-icon">⚡</div>
+                                    <h4>Real-Time Updates</h4>
+                                    <p>30-second refresh rate on all OI data. No delays, no stale data.</p>
+                                </div>
+                                <div class="diff-card">
+                                    <div class="diff-icon">🧠</div>
+                                    <h4>AI-Powered Predictions</h4>
+                                    <p>Machine learning models analyze historical patterns to predict expiry ranges.</p>
+                                </div>
+                                <div class="diff-card">
+                                    <div class="diff-icon">📊</div>
+                                    <h4>Visual Intelligence</h4>
+                                    <p>Complex data presented in simple, actionable charts and dashboards.</p>
+                                </div>
+                                <div class="diff-card">
+                                    <div class="diff-icon">🛡️</div>
+                                    <h4>Risk Management</h4>
+                                    <p>Built-in calculators ensure you never over-leverage or take excessive risk.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-section about-cta">
+                            <h2>Ready to Trade Like a Pro?</h2>
+                            <p>Join 1200+ traders who have transformed their options trading with data-driven intelligence.</p>
+                            <button class="btn btn--primary btn--lg" onclick="navigateTo('signup')">Start Your Free Trial</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FEATURES PAGE -->
+        <section id="page-features" class="page" style="display: none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Powerful Tools for Smart Traders</h1>
+                    <p>Everything you need to trade options profitably</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="container">
+                    <div class="features-grid">
+                        <div class="feature-detail-card">
+                            <div class="feature-icon">📊</div>
+                            <h3>Live OI Dashboard</h3>
+                            <p>Real-time Open Interest data for Nifty and Sensex. See exactly where institutions are building positions.</p>
+                            <ul>
+                                <li>Tug of War visualization (Calls vs Puts)</li>
+                                <li>Walls of Nifty (Support/Resistance)</li>
+                                <li>PCR Ratio with interpretation</li>
+                                <li>Live price updates every 5 seconds</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-detail-card">
+                            <div class="feature-icon">🧮</div>
+                            <h3>Greeks Calculator</h3>
+                            <p>Understand option pricing with our advanced Black-Scholes calculator. No more guessing.</p>
+                            <ul>
+                                <li>Calculate Delta, Gamma, Theta, Vega, Rho</li>
+                                <li>Plain English explanations</li>
+                                <li>Visual charts for each Greek</li>
+                                <li>Scenario analysis for different prices</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-detail-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Max Pain Calculator</h3>
+                            <p>Find the strike where option writers make maximum profit. Market often gravitates here.</p>
+                            <ul>
+                                <li>Updated every 5 minutes</li>
+                                <li>Historical max pain tracking</li>
+                                <li>Accuracy indicator</li>
+                                <li>Strategy suggestions</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-detail-card">
+                            <div class="feature-icon">🔔</div>
+                            <h3>OI Change Alerts</h3>
+                            <p>Get instant notifications when significant OI changes happen in specific strikes.</p>
+                            <ul>
+                                <li>Real-time alerts for OI spikes</li>
+                                <li>Customizable threshold settings</li>
+                                <li>SMS alerts (Pro+ only)</li>
+                                <li>Historical alert performance</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-detail-card">
+                            <div class="feature-icon">👥</div>
+                            <h3>Pro Traders' Room</h3>
+                            <p>Join live discussions with profitable traders. Share strategies and learn from the best.</p>
+                            <ul>
+                                <li>Real-time chat with verified traders</li>
+                                <li>Daily pre-market analysis</li>
+                                <li>Strategy showcases</li>
+                                <li>Live trade calls (with disclaimers)</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-detail-card">
+                            <div class="feature-icon">🔮</div>
+                            <h3>Scenario Builder</h3>
+                            <p>Test your strategy before risking real money. What-if analysis made easy.</p>
+                            <ul>
+                                <li>Multi-leg strategy testing</li>
+                                <li>P&L calculations</li>
+                                <li>Greeks analysis</li>
+                                <li>Risk/reward visualization</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-detail-card">
+                            <div class="feature-icon">🛡️</div>
+                            <h3>Risk Calculator</h3>
+                            <p>Never over-leverage again. Calculate perfect position sizes based on your capital.</p>
+                            <ul>
+                                <li>Position sizing calculator</li>
+                                <li>Risk percentage calculator</li>
+                                <li>Stop loss suggestions</li>
+                                <li>Win/loss ratio tracking</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-detail-card">
+                            <div class="feature-icon">🐋</div>
+                            <h3>Heavyweights Tracker</h3>
+                            <p>Track large orders and institutional activity. Follow the smart money.</p>
+                            <ul>
+                                <li>Big order alerts (₹1Cr+)</li>
+                                <li>FII/DII activity</li>
+                                <li>Institutional positioning</li>
+                                <li>Bulk deal tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING PAGE -->
+        <section id="page-pricing" class="page" style="display: none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Simple, Transparent Pricing</h1>
+                    <p>Choose the plan that's right for you</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="container">
+                    <div class="pricing-grid">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3>Free</h3>
+                                <div class="price">
+                                    <span class="amount">₹0</span>
+                                    <span class="period">forever</span>
+                                </div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>✓ Live OI Dashboard</li>
+                                <li>✓ Walls of Nifty (Top 2)</li>
+                                <li>✓ India VIX Meter</li>
+                                <li>✓ PCR Ratio</li>
+                                <li>✓ Limited OI Stream</li>
+                                <li class="disabled">✗ Full OI Data</li>
+                                <li class="disabled">✗ Greeks Calculator</li>
+                                <li class="disabled">✗ Pro Traders' Room</li>
+                            </ul>
+                            <button class="btn btn--outline btn--full-width" onclick="navigateTo('signup')">Get Started Free</button>
+                        </div>
+
+                        <div class="pricing-card pricing-card--featured">
+                            <div class="popular-badge">Most Popular</div>
+                            <div class="pricing-header">
+                                <h3>Pro</h3>
+                                <div class="price">
+                                    <span class="amount">₹499</span>
+                                    <span class="period">/month</span>
+                                </div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>✓ Everything in Free</li>
+                                <li>✓ Full OI Stream (All Strikes)</li>
+                                <li>✓ Live OI Change Alerts</li>
+                                <li>✓ Max Pain Calculator</li>
+                                <li>✓ Greeks Calculator (Full)</li>
+                                <li>✓ Scenario Builder</li>
+                                <li>✓ Risk Calculator</li>
+                                <li>✓ Heavyweights Tracker</li>
+                                <li>✓ Pro Traders' Live Room</li>
+                                <li>✓ Strategy Analyzer</li>
+                                <li>✓ Email Support</li>
+                            </ul>
+                            <button class="btn btn--primary btn--full-width" onclick="navigateTo('checkout', 'pro')">Start 7-Day Free Trial</button>
+                        </div>
+
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3>Pro+</h3>
+                                <div class="price">
+                                    <span class="amount">₹999</span>
+                                    <span class="period">/month</span>
+                                </div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>✓ Everything in Pro</li>
+                                <li>✓ SMS Alerts</li>
+                                <li>✓ Daily Email Summary</li>
+                                <li>✓ Priority Support</li>
+                                <li>✓ Advanced Analytics</li>
+                                <li>✓ Multi-Leg Strategy Builder</li>
+                                <li>✓ API Access</li>
+                                <li>✓ Custom Reports</li>
+                                <li>✓ Dedicated Account Manager</li>
+                            </ul>
+                            <button class="btn btn--outline btn--full-width" onclick="navigateTo('checkout', 'proplus')">Start 7-Day Free Trial</button>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="faq-section">
+                        <h2>Frequently Asked Questions</h2>
+                        <div class="faq-grid">
+                            <div class="faq-item">
+                                <h4>Can I cancel anytime?</h4>
+                                <p>Yes, you can cancel your subscription at any time. No questions asked.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>Is the 7-day trial really free?</h4>
+                                <p>Absolutely. No credit card required for the trial. You can upgrade anytime.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>What payment methods do you accept?</h4>
+                                <p>We accept UPI, Net Banking, Credit/Debit Cards via Razorpay.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>Do you offer refunds?</h4>
+                                <p>Yes, 30-day money-back guarantee if you're not satisfied.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD FREE -->
+        <section id="page-dashboard" class="page" style="display: none;">
+            <div class="dashboard-header">
+                <div class="container">
+                    <h1>Live Dashboard</h1>
+                    <p>Real-time Options Intelligence</p>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="container">
+                    <!-- Tug of War -->
+                    <div class="dashboard-card">
+                        <h3>Tug of War: Calls vs Puts</h3>
+                        <div class="tug-of-war">
+                            <div class="tow-label">Calls</div>
+                            <div class="tow-bar">
+                                <div class="tow-calls" id="towCalls" style="width: 54%;"></div>
+                                <div class="tow-puts" id="towPuts" style="width: 46%;"></div>
+                            </div>
+                            <div class="tow-label">Puts</div>
+                        </div>
+                        <div class="tow-values">
+                            <div>
+                                <strong>Call OI:</strong> <span id="callOI">52.8 Cr</span>
+                            </div>
+                            <div>
+                                <strong>Put OI:</strong> <span id="putOI">45.2 Cr</span>
+                            </div>
+                        </div>
+                        <p class="interpretation">📊 Calls are dominating. Market sentiment: Bullish</p>
+                    </div>
+
+                    <!-- Walls of Nifty -->
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <h3>Walls of Nifty</h3>
+                            <div class="walls">
+                                <div class="wall wall-support">
+                                    <div class="wall-label">Strong Support</div>
+                                    <div class="wall-strike">25,100 PE</div>
+                                    <div class="wall-oi">12.5 Lakh OI</div>
+                                </div>
+                                <div class="wall wall-resistance">
+                                    <div class="wall-label">Strong Resistance</div>
+                                    <div class="wall-strike">25,200 CE</div>
+                                    <div class="wall-oi">14.2 Lakh OI</div>
+                                </div>
+                            </div>
+                            <p class="interpretation">🎯 Range: 25,100 - 25,200</p>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h3>India VIX Meter</h3>
+                            <div class="vix-meter">
+                                <canvas id="vixGauge"></canvas>
+                            </div>
+                            <div class="vix-value">
+                                <strong id="vixDisplay">18.5</strong>
+                                <span>Moderate Volatility</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PCR Ratio -->
+                    <div class="dashboard-card">
+                        <h3>Put-Call Ratio (PCR)</h3>
+                        <div class="pcr-display">
+                            <div class="pcr-value" id="pcrValue">0.85</div>
+                            <div class="pcr-bar">
+                                <div class="pcr-indicator" style="left: 42.5%;"></div>
+                            </div>
+                            <div class="pcr-labels">
+                                <span>Bearish (&lt;0.7)</span>
+                                <span>Neutral (0.7-1.3)</span>
+                                <span>Bullish (&gt;1.3)</span>
+                            </div>
+                        </div>
+                        <p class="interpretation">📈 PCR at 0.85 suggests neutral to slightly bullish sentiment</p>
+                    </div>
+
+                    <!-- Limited OI Stream -->
+                    <div class="dashboard-card">
+                        <h3>OI Stream (Limited)</h3>
+                        <div class="upgrade-overlay">
+                            <div class="upgrade-message">
+                                <h4>🔒 Upgrade to Pro</h4>
+                                <p>Get full access to all strikes, live alerts, and more</p>
+                                <button class="btn btn--primary" onclick="navigateTo('pricing')">Upgrade Now</button>
+                            </div>
+                        </div>
+                        <div class="oi-stream blurred">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Strike</th>
+                                        <th>Call OI</th>
+                                        <th>Put OI</th>
+                                        <th>Change</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="oiStreamTable">
+                                    <tr><td>25000</td><td>8.2L</td><td>15.4L</td><td class="positive">+2.1L</td></tr>
+                                    <tr><td>25050</td><td>6.8L</td><td>12.3L</td><td class="negative">-1.5L</td></tr>
+                                    <tr><td>25100</td><td>12.5L</td><td>11.2L</td><td class="positive">+3.2L</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD PRO -->
+        <section id="page-dashboard-pro" class="page" style="display: none;">
+            <div class="dashboard-header">
+                <div class="container">
+                    <h1>Pro Dashboard</h1>
+                    <div class="pro-badge">PRO</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="container">
+                    <!-- All Free Features -->
+                    <div class="dashboard-card">
+                        <h3>Tug of War: Calls vs Puts</h3>
+                        <div class="tug-of-war">
+                            <div class="tow-label">Calls</div>
+                            <div class="tow-bar">
+                                <div class="tow-calls" style="width: 54%;"></div>
+                                <div class="tow-puts" style="width: 46%;"></div>
+                            </div>
+                            <div class="tow-label">Puts</div>
+                        </div>
+                        <div class="tow-values">
+                            <div><strong>Call OI:</strong> 52.8 Cr</div>
+                            <div><strong>Put OI:</strong> 45.2 Cr</div>
+                        </div>
+                    </div>
+
+                    <!-- Full OI Stream -->
+                    <div class="dashboard-card">
+                        <h3>Full OI Stream - All Strikes</h3>
+                        <div class="oi-controls">
+                            <select id="strikeFilter" class="form-control">
+                                <option>All Strikes</option>
+                                <option>ATM ±500</option>
+                                <option>ITM Only</option>
+                                <option>OTM Only</option>
+                            </select>
+                            <select id="sortBy" class="form-control">
+                                <option>Sort by Strike</option>
+                                <option>Sort by Call OI</option>
+                                <option>Sort by Put OI</option>
+                                <option>Sort by Change</option>
+                            </select>
+                        </div>
+                        <div class="oi-stream">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Strike</th>
+                                        <th>Call OI</th>
+                                        <th>Call Chg</th>
+                                        <th>Put OI</th>
+                                        <th>Put Chg</th>
+                                        <th>PCR</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fullOITable">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Max Pain -->
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <h3>Max Pain Analysis</h3>
+                            <div class="max-pain-display">
+                                <div class="max-pain-value">25,150</div>
+                                <p>Current: 25,142 | Distance: 8 points</p>
+                                <canvas id="maxPainChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h3>Heavyweights Tracker</h3>
+                            <div class="heavyweights-list" id="heavyweightsList">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Alerts -->
+                    <div class="dashboard-card">
+                        <h3>🔔 Live OI Change Alerts</h3>
+                        <div class="alerts-feed" id="alertsFeed">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GREEKS CALCULATOR -->
+        <section id="page-greeks" class="page" style="display: none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Greeks Calculator</h1>
+                    <p>Understand option pricing with Black-Scholes model</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="greeks-layout">
+                        <div class="greeks-input">
+                            <h3>Input Parameters</h3>
+                            <div class="form-group">
+                                <label class="form-label">Spot Price (Nifty)</label>
+                                <input type="number" id="spotPrice" class="form-control" value="25142">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Strike Price</label>
+                                <input type="number" id="strikePrice" class="form-control" value="25200">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Days to Expiry</label>
+                                <select id="daysToExpiry" class="form-control">
+                                    <option value="1">1 Day</option>
+                                    <option value="2">2 Days</option>
+                                    <option value="7" selected>7 Days (Weekly)</option>
+                                    <option value="14">14 Days</option>
+                                    <option value="30">30 Days (Monthly)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Volatility (VIX %)</label>
+                                <input type="number" id="volatility" class="form-control" value="18.5" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Interest Rate (%)</label>
+                                <input type="number" id="interestRate" class="form-control" value="6.5" step="0.1">
+                            </div>
+                            <button class="btn btn--primary btn--full-width" onclick="calculateGreeks()">Calculate</button>
+                        </div>
+
+                        <div class="greeks-output" id="greeksOutput">
+                            <h3>Results</h3>
+                            <div class="greeks-results">
+                                <div class="greeks-section">
+                                    <h4>Premiums</h4>
+                                    <div class="premium-display">
+                                        <div class="premium-box">
+                                            <span>Call Premium</span>
+                                            <strong id="callPremium">--</strong>
+                                        </div>
+                                        <div class="premium-box">
+                                            <span>Put Premium</span>
+                                            <strong id="putPremium">--</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="greeks-section">
+                                    <h4>The Greeks</h4>
+                                    <div class="greek-item">
+                                        <div class="greek-header">
+                                            <strong>Delta</strong>
+                                            <span>Call: <span id="callDelta">--</span> | Put: <span id="putDelta">--</span></span>
+                                        </div>
+                                        <p class="greek-explanation" id="deltaExplanation"></p>
+                                    </div>
+                                    <div class="greek-item">
+                                        <div class="greek-header">
+                                            <strong>Gamma</strong>
+                                            <span id="gamma">--</span>
+                                        </div>
+                                        <p class="greek-explanation" id="gammaExplanation"></p>
+                                    </div>
+                                    <div class="greek-item">
+                                        <div class="greek-header">
+                                            <strong>Theta</strong>
+                                            <span>Call: <span id="callTheta">--</span> | Put: <span id="putTheta">--</span></span>
+                                        </div>
+                                        <p class="greek-explanation" id="thetaExplanation"></p>
+                                    </div>
+                                    <div class="greek-item">
+                                        <div class="greek-header">
+                                            <strong>Vega</strong>
+                                            <span id="vega">--</span>
+                                        </div>
+                                        <p class="greek-explanation" id="vegaExplanation"></p>
+                                    </div>
+                                    <div class="greek-item">
+                                        <div class="greek-header">
+                                            <strong>Rho</strong>
+                                            <span>Call: <span id="callRho">--</span> | Put: <span id="putRho">--</span></span>
+                                        </div>
+                                        <p class="greek-explanation" id="rhoExplanation"></p>
+                                    </div>
+                                </div>
+
+                                <div class="greeks-section">
+                                    <h4>Visual Analysis</h4>
+                                    <canvas id="greeksChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLS PAGE -->
+        <section id="page-tools" class="page" style="display: none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Trading Tools</h1>
+                    <p>Professional calculators and analyzers</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="tools-grid">
+                        <!-- Risk Calculator -->
+                        <div class="tool-card">
+                            <h3>🛡️ Risk Calculator</h3>
+                            <div class="form-group">
+                                <label class="form-label">Total Capital (₹)</label>
+                                <input type="number" id="totalCapital" class="form-control" value="100000">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Risk Per Trade (%)</label>
+                                <input type="number" id="riskPercent" class="form-control" value="2" step="0.5">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Entry Price</label>
+                                <input type="number" id="entryPrice" class="form-control" value="100">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Stop Loss</label>
+                                <input type="number" id="stopLoss" class="form-control" value="90">
+                            </div>
+                            <button class="btn btn--primary btn--full-width" onclick="calculateRisk()">Calculate</button>
+                            <div class="tool-result" id="riskResult"></div>
+                        </div>
+
+                        <!-- Max Pain Calculator -->
+                        <div class="tool-card">
+                            <h3>🎯 Max Pain Calculator</h3>
+                            <div class="max-pain-result">
+                                <div class="result-big">25,150</div>
+                                <p>Max Pain Strike</p>
+                                <div class="result-info">
+                                    <div>Current Nifty: 25,142</div>
+                                    <div>Distance: 8 points</div>
+                                    <div>Probability: High</div>
+                                </div>
+                                <p class="interpretation">💡 Market likely to gravitate towards 25,150 by expiry</p>
+                            </div>
+                        </div>
+
+                        <!-- IV Rank -->
+                        <div class="tool-card">
+                            <h3>📊 IV Rank</h3>
+                            <div class="iv-rank-display">
+                                <div class="iv-current">18.5</div>
+                                <p>Current VIX</p>
+                                <div class="iv-range">
+                                    <div>52-Week Low: 10.2</div>
+                                    <div>52-Week High: 28.4</div>
+                                    <div class="iv-percentile">Percentile: 45%</div>
+                                </div>
+                                <p class="interpretation">📊 Moderate volatility - Good for selling options</p>
+                            </div>
+                        </div>
+
+                        <!-- Scenario Builder -->
+                        <div class="tool-card">
+                            <h3>🔮 Scenario Builder</h3>
+                            <div class="form-group">
+                                <label class="form-label">Strategy Type</label>
+                                <select id="strategyType" class="form-control">
+                                    <option>Long Call</option>
+                                    <option>Long Put</option>
+                                    <option>Bull Call Spread</option>
+                                    <option>Bear Put Spread</option>
+                                    <option>Iron Condor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Expected Nifty at Expiry</label>
+                                <input type="number" id="expectedPrice" class="form-control" value="25300">
+                            </div>
+                            <button class="btn btn--primary btn--full-width" onclick="buildScenario()">Analyze</button>
+                            <div class="tool-result" id="scenarioResult"></div>
+                        </div>
+
+                        <!-- Strategy Analyzer -->
+                        <div class="tool-card">
+                            <h3>📈 Strategy Analyzer</h3>
+                            <p>Analyze multi-leg option strategies</p>
+                            <div class="strategy-legs">
+                                <button class="btn btn--outline btn--sm" onclick="addLeg()">+ Add Leg</button>
+                            </div>
+                            <div id="legsContainer"></div>
+                            <button class="btn btn--primary btn--full-width" onclick="analyzeStrategy()">Analyze Strategy</button>
+                        </div>
+
+                        <!-- Position Sizer -->
+                        <div class="tool-card">
+                            <h3>💰 Position Sizer</h3>
+                            <div class="form-group">
+                                <label class="form-label">Account Size (₹)</label>
+                                <input type="number" id="accountSize" class="form-control" value="500000">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Option Premium</label>
+                                <input type="number" id="optionPremium" class="form-control" value="50">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Lot Size</label>
+                                <input type="number" id="lotSize" class="form-control" value="50">
+                            </div>
+                            <button class="btn btn--primary btn--full-width" onclick="calculatePosition()">Calculate</button>
+                            <div class="tool-result" id="positionResult"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRO TRADERS ROOM -->
+        <section id="page-traders-room" class="page" style="display: none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Pro Traders' Room</h1>
+                    <div class="pro-badge">PRO MEMBERS ONLY</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="traders-room-layout" id="tradersRoomContent">
+                        <!-- Will be populated based on user subscription -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOGIN PAGE -->
+        <section id="page-login" class="page" style="display: none;">
+            <div class="auth-page">
+                <div class="auth-container">
+                    <h2>Welcome Back</h2>
+                    <p>Log in to access your dashboard</p>
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="loginEmail" class="form-control" required placeholder="demo@trader.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="loginPassword" class="form-control" required placeholder="demo123">
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="rememberMe">
+                                Remember me
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Log In</button>
+                    </form>
+                    <p class="auth-footer">
+                        Don't have an account? <a href="#" onclick="navigateTo('signup')">Sign up free</a>
+                    </p>
+                    <p class="demo-info">
+                        <strong>Demo Accounts:</strong><br>
+                        Free: demo@trader.com / demo123<br>
+                        Pro: pro@trader.com / pro123
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIGNUP PAGE -->
+        <section id="page-signup" class="page" style="display: none;">
+            <div class="auth-page">
+                <div class="auth-container">
+                    <h2>Start Your Free Trial</h2>
+                    <p>No credit card required • Cancel anytime</p>
+                    <form id="signupForm" onsubmit="handleSignup(event)">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" id="signupName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="signupEmail" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="signupPassword" class="form-control" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeTerms" required>
+                                I agree to the Terms &amp; Conditions and Privacy Policy
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Create Free Account</button>
+                    </form>
+                    <p class="auth-footer">
+                        Already have an account? <a href="#" onclick="navigateTo('login')">Log in</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHECKOUT PAGE -->
+        <section id="page-checkout" class="page" style="display: none;">
+            <div class="checkout-page">
+                <div class="container">
+                    <h2>Complete Your Purchase</h2>
+                    <div class="checkout-layout">
+                        <div class="checkout-summary">
+                            <h3>Order Summary</h3>
+                            <div class="summary-item">
+                                <span>Plan:</span>
+                                <strong id="checkoutPlan">Pro</strong>
+                            </div>
+                            <div class="summary-item">
+                                <span>Billing:</span>
+                                <strong>Monthly</strong>
+                            </div>
+                            <div class="summary-item">
+                                <span>7-Day Free Trial:</span>
+                                <strong>₹0</strong>
+                            </div>
+                            <div class="summary-item total">
+                                <span>After Trial:</span>
+                                <strong id="checkoutPrice">₹499/month</strong>
+                            </div>
+                            <button class="btn btn--primary btn--full-width" onclick="processPayment()">Pay with Razorpay</button>
+                            <p class="checkout-note">You won't be charged today. Your trial starts immediately.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUCCESS PAGE -->
+        <section id="page-success" class="page" style="display: none;">
+            <div class="success-page">
+                <div class="container">
+                    <div class="success-message">
+                        <div class="success-icon">✓</div>
+                        <h2>Welcome to OI Pulse Pro!</h2>
+                        <p>Your account has been created successfully</p>
+                        <button class="btn btn--primary" onclick="navigateTo('dashboard-pro')">Go to Dashboard</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>OI Pulse Pro</h4>
+                    <p>Professional options trading intelligence platform for Indian markets.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#features" onclick="navigateTo('features')">Features</a>
+                    <a href="#pricing" onclick="navigateTo('pricing')">Pricing</a>
+                    <a href="#tools" onclick="navigateTo('tools')">Tools</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Disclaimer</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: support@finoppartners.com</p>
+                    <p>Phone: +91-8888-999-000</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FinOp Partners. All rights reserved.</p>
+                <p class="disclaimer">Trading in options involves substantial risk. Past performance is not indicative of future results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <div style="background: #fff3cd; padding: 15px; margin: 10px; border-radius: 5px; border-left: 4px solid #ff9800; text-align: center;">
+  <strong>⚠️ EDUCATIONAL & ANALYTICAL TOOL ONLY</strong>
+  <p>FinOp Partners analyzes market data for education purposes. Options trading carries substantial risk of total loss. 
+  Trade only with capital you can afford to lose. <a href="#" onclick="alert('See Terms & Disclaimer')">Read Disclaimer</a></p>
+</div>
+<!-- TERMS OF SERVICE PAGE -->
+<div id="page-terms-of-service" class="page">
+  <div class="container">
+    <h1>Terms of Service</h1>
+    <div class="legal-content">
+      <h2>FinOp Partners - Terms of Service</h2>
+      <p><strong>Last Updated: November 2025</strong></p>
+      
+      <h3>1. Educational Purpose Only</h3>
+      <p>FinOp Partners is an EDUCATIONAL AND ANALYTICAL TOOL ONLY. We do NOT provide investment advice, trading recommendations, or guaranteed returns. All users must understand that options trading carries substantial risk of total loss.</p>
+      
+      <h3>2. No Guarantees</h3>
+      <p>Past performance does not guarantee future results. Market data shown is for historical analysis and educational purposes only. We are not liable for any losses incurred from trading decisions.</p>
+      
+      <h3>3. Subscription Terms</h3>
+      <p>Free Trial: 7 days with limited features. After 7 days, access switches to free tier. Paid subscriptions (Pro/Pro+) renew monthly. You may cancel anytime.</p>
+      
+      <h3>4. User Responsibilities</h3>
+      <p>You are solely responsible for all trading decisions. Trade only with capital you can afford to lose. Comply with all SEBI regulations and local laws.</p>
+      
+      <h3>5. Data Accuracy</h3>
+      <p>While we strive for accuracy, we do not guarantee all data is accurate, complete, or real-time. NSE data may be delayed. Dhan API failures may result in demo data.</p>
+      
+      <h3>6. Refund Policy</h3>
+      <p>30-day money-back guarantee on all paid subscriptions. If unsatisfied, contact support@finoppartners.com within 30 days for full refund.</p>
+      
+      <p style="margin-top: 30px;"><a href="#" onclick="navigateTo('home'); return false;">← Back to Home</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVACY POLICY PAGE -->
+<div id="page-privacy-policy" class="page">
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <div class="legal-content">
+      <h2>FinOp Partners - Privacy Policy</h2>
+      <p><strong>Last Updated: November 2025</strong></p>
+      
+      <h3>What We Collect</h3>
+      <p>Email, name, password (hashed), phone number, trading preferences, login history.</p>
+      
+      <h3>How We Use It</h3>
+      <p>To create your account, send verification emails, process payments, provide customer support, and improve our service.</p>
+      
+      <h3>Data Security</h3>
+      <p>All passwords are encrypted. Payment data processed by Razorpay (PCI-DSS compliant). We do not sell your data to third parties.</p>
+      
+      <h3>Your Rights</h3>
+      <p>You can request deletion of your account anytime. You can opt-out of marketing emails by clicking "Unsubscribe".</p>
+      
+      <h3>Contact</h3>
+      <p>privacy@finoppartners.com</p>
+      
+      <p style="margin-top: 30px;"><a href="#" onclick="navigateTo('home'); return false;">← Back to Home</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- RISK DISCLAIMER PAGE -->
+<div id="page-risk-disclaimer" class="page">
+  <div class="container">
+    <h1>⚠️ Risk Disclaimer</h1>
+    <div class="legal-content">
+      <h2>Options Trading Risk Disclaimer</h2>
+      
+      <h3>IMPORTANT - READ CAREFULLY</h3>
+      <p><strong>Options trading is HIGHLY SPECULATIVE and carries SUBSTANTIAL RISK OF TOTAL LOSS.</strong></p>
+      
+      <h3>Key Risks:</h3>
+      <ul>
+        <li>Leverage Risk: Small price moves = big losses</li>
+        <li>Time Decay: Options lose value as expiry approaches</li>
+        <li>Gap Risk: Markets can move overnight causing losses exceeding initial investment</li>
+        <li>Liquidity Risk: Some options may be hard to exit at desired price</li>
+        <li>Greeks Limitations: Calculated values may differ from actual market prices</li>
+      </ul>
+      
+      <h3>FinOp Partners:</h3>
+      <p>❌ Does NOT provide investment advice<br>
+      ❌ Does NOT guarantee profits<br>
+      ❌ Does NOT act as a licensed advisor<br>
+      ✅ Provides educational analytics only<br>
+      ✅ Shows historical data only</p>
+      
+      <h3>SEBI Compliance:</h3>
+      <p>All users must comply with SEBI regulations. Retail traders have position limits. You are responsible for maintaining compliance.</p>
+      
+      <h3>By Using This Platform:</h3>
+      <p>You acknowledge that you understand options trading risks and will not hold FinOp Partners liable for any trading losses.</p>
+      
+      <p style="margin-top: 30px;"><a href="#" onclick="navigateTo('home'); return false;">← Back to Home</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT US PAGE -->
+<div id="page-about-us" class="page">
+  <div class="container">
+    <h1>About FinOp Partners</h1>
+    <div class="legal-content">
+      <h2>Professional Options Analytics Platform</h2>
+      
+      <h3>Our Mission</h3>
+      <p>To empower retail traders with professional-grade analytics tools and real-time market intelligence for educational purposes.</p>
+      
+      <h3>What We Offer</h3>
+      <ul>
+        <li>Real-time Greeks Analysis (Delta, Gamma, Theta, Vega)</li>
+        <li>Max Pain Calculations from Open Interest</li>
+        <li>OI Intelligence with historical analysis</li>
+        <li>Strategy analysis tools</li>
+        <li>Email alerts and notifications</li>
+      </ul>
+      
+      <h3>Data Sources</h3>
+      <p>All market data sourced from NSE (National Stock Exchange) via Dhan API. Real-time during market hours (9:15 AM - 3:30 PM IST).</p>
+      
+      <h3>Contact</h3>
+      <p>Email: support@finoppartners.com</p>
+      <p>This is an educational platform. Not affiliated with NSE, SEBI, or any broker.</p>
+      
+      <p style="margin-top: 30px;"><a href="#" onclick="navigateTo('home'); return false;">← Back to Home</a></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
