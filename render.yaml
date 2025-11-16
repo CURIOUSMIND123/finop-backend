@@ -1,0 +1,16 @@
+yaml
+services:
+  - type: web
+    name: trading-backend
+    runtime: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DHAN_CLIENT_ID
+        value: 1109167959
+      - key: DHAN_ACCESS_TOKEN
+        value: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkaGFuIiwicGFydG5lcklkIjoiIiwiZXhwIjoxNzYzNDA3MDc0LCJpYXQiOjE3NjMzMjA2NzQsInRva2VuQ29uc3VtZXJUeXBlIjoiU0VMRiIsIndlYmhvb2tVcmwiOiIiLCJkaGFuQ2xpZW50SWQiOiIxMTA5MTY3OTU5In0.5cw88bF4G8vn9BdK33HatfTomNqQT-JdzD7EoBFP0s-did3MfqpRJRuTyx4J44LVAK0bdhxA7aagWrt9Ep7COg
+      - key: PORT
+        value: 5000
